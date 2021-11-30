@@ -1,0 +1,44 @@
+{
+    "name": "cefalo-internship-nodejs",
+    "version": "1.0.0",
+    "description": "A CRUD project build with Nodejs",
+    "main": "app.js",
+    "scripts": {
+        "start": "nodemon server.js",
+        "test": "jest --detectOpenHandles"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jagonmoy/Cefalo-Internship-Nodejs.git"
+    },
+    "author": "Jagonmoy",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jagonmoy/Cefalo-Internship-Nodejs/issues"
+    },
+    "homepage": "https://github.com/jagonmoy/Cefalo-Internship-Nodejs#readme",
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "bcryptjs": "^2.4.3",
+        "cookie-parser": "^1.4.6",
+        "cors": "^2.8.5",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "express-negotiate": "^0.0.6",
+        "express-validator": "^6.13.0",
+        "js2xmlparser": "^4.0.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^5.13.10",
+        "morgan": "^1.10.0",
+        "nodemon": "^2.0.14",
+        "sinon-test": "^3.1.1",
+        "validator": "^13.6.0",
+        "xml": "^1.0.1"
+    },
+    "devDependencies": {
+        "jest": "^27.3.1",
+        "mock-req-res": "^1.2.0",
+        "sinon": "^11.1.2",
+        "supertest": "^6.1.6"
+    }
+}
