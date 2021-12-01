@@ -7,6 +7,8 @@ import BlogView from './pages/blogView';
 import MyBlog from './pages/myBlog'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PageNotFound from './pages/pageNotFound';
+import Users from './pages/users';
+import Profile from './pages/profile';
 function App() {
 
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route exact path="/new-blog" component={CreateBlog}/>
           <Route exact path="/my-blog" component={MyBlog}/>
           <Route exact path="/blogs/:blogID" component={BlogView} />
+          <Route exact path="/profile/:username" component={Profile} />
+          <Route exact path="/users-list" component={Users} />
           <Route component={PageNotFound} />
         </Switch>
       </Router>

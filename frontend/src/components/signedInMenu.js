@@ -47,6 +47,15 @@ export default function SignedInMenu() {
       history.push('/my-blog')
       setAnchorEl(null);
   };
+  const handleUsersList = () => {
+    history.push('/users-list')
+    setAnchorEl(null);
+};
+const handleProfile = () => {
+  history.push(`/profile/${localStorage.getItem('username')}`)
+  setAnchorEl(null);
+};
+
 
 
     return (
@@ -67,6 +76,16 @@ export default function SignedInMenu() {
           onClose={handleClose}
           TransitionComponent={Fade}
         >
+          <MenuItem onClick={handleProfile} color="primary"> <Typography
+              variant="overline"
+              display="block"
+              gutterBottom
+              color = "primary"
+          >
+             My Profile
+            </Typography> </MenuItem>
+
+
           <MenuItem onClick={handleSignOut} color="primary">
             <Typography
               variant="overline"
@@ -98,6 +117,14 @@ export default function SignedInMenu() {
              MY BLOGS
             </Typography>
           </MenuItem>
+          {localStorage.getItem('username') === 'admin' &&   <MenuItem onClick={handleUsersList} color="primary"> <Typography
+              variant="overline"
+              display="block"
+              gutterBottom
+              color = "primary"
+          >
+             Users List
+            </Typography> </MenuItem>}
         </Menu>
       </React.Fragment>
     )

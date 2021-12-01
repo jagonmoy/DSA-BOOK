@@ -31,7 +31,7 @@ function Navbar() {
       <Toolbar>
         <Grid justifyContent="space-between" container spacing={1}>
           <Typography
-            onClick={() => history.push("./")}
+            onClick={() => history.push("/")}
             variant="h6"
             color="primary"
           >
