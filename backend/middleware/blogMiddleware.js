@@ -24,7 +24,7 @@ exports.protect = async(req, res,next) => {
       }
       
       const legitUser = await userService.getUser(decoded.username);
-      if(typeof legitUser.username === "undefined") rcontentNegotiation.sendResponse(401,"Token Belongs To the User Does not Exits",req,res,null);
+      if(typeof legitUser.username === "undefined") contentNegotiation.sendResponse(401,"Token Belongs To the User Does not Exits",req,res,null);
   
       req.body.username = decoded.username;
   

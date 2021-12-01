@@ -1,6 +1,8 @@
 const contentNegotiation = require("../utils/contentNegotiation")
 const {AuthService} = require("../service/authService")
 const {MongoAuthDao} = require("../dao/auth/mongoAuthDao")
+const mongoUser = require("../models/userModel");
+const mongoRole = require("../models/roleModel")
 const  sendJWTToken = require("../utils/sendJWTToken")
 const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken')
@@ -13,13 +15,39 @@ exports.authService = authService ;
 
 exports.signup = async (req, res) => {
  try {
-   const newUser = await authService.signupUser(req);
-   if(typeof newUser === "string") return contentNegotiation.sendErrorResponse(403,newUser,req,res);
-   else return contentNegotiation.sendResponse(200,newUser,req,res);
+    const {email,username} = req.body;
+    let newUser = await mongoUser.findOne({email});
+    if (newUser) contentNegotiation.sendErrorResponse(403,"Email is not Unique",req,res);
+    newUser = await mongoUser.findOne({username});
+    if (newUser) contentNegotiation.sendErrorResponse(403,"Username is not Unique",req,res);
+    // console.log("hello")
+    newUser = await mongoUser.create(req.body);
+    const general = await mongoRole.findOne({ role : "general"});
+    console.log(general);
+    general.users.push(newUser);
+    console.log(general);
+    general.save(function(err,result){
+      if (err){
+          console.log(err);
+      }
+      else{
+          console.log(result)
+      }
+    })
+    return contentNegotiation.sendResponse(200,newUser,req,res);
  } 
  catch (error) {
    return contentNegotiation.sendErrorResponse(403,error.message,req,res);
  }
+};
+exports.createRole = async (req, res) => {
+    try {
+       role = await mongoRole.create(req.body);
+       return contentNegotiation.sendResponse(200,role,req,res);
+    } 
+    catch (error) {
+      return contentNegotiation.sendErrorResponse(403,error.message,req,res);
+    }
 };
 
 exports.signin = async (req, res) => {

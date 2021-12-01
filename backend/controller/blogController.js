@@ -1,6 +1,7 @@
 const contentNegotiation = require("../utils/contentNegotiation")
 const  MongoBlog = require("../models/blogModel");
 const MongoUser = require("../models/userModel")
+
 const {mongoAPIFeatures} = require("../utils/apiFeatures/mongoBlogFeatures");
 
 exports.getAllBlogs = async (req, res) => {
@@ -38,15 +39,14 @@ exports.getBlog = async (req, res) => {
 
 exports.createBlog = async (req, res) => {
   try {
-    console.log("ki holo")
+    // console.log("ki holo")
     const newBlog = await MongoBlog.create(req.body);
     const username = req.body.username;
-    console.log("my name is ",username);
+    // console.log("my name is ",username);
     const user = await MongoUser.findOne({username});
-    console.log(user.stories);
+    // console.log(user.stories);
     user.stories.push(newBlog);
-
-    console.log(user);
+    // console.log(user);
     user.save(function(err,result){
       if (err){
           console.log(err);

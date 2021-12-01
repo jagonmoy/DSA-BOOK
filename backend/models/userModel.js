@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 const bcrypt = require('bcryptjs')
-const MongoBlog = require('./blogModel')
-
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -29,7 +27,8 @@ const userSchema = new mongoose.Schema({
      required: true,
      select: false,
   },
-  stories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Blog' }]
+  stories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Blog' }] ,
+  profile: { type: mongoose.Schema.Types.ObjectId, ref: 'Profile' },
 },{
   timestamps : true
 });
