@@ -9,9 +9,9 @@ const DatabaseConnection = async () => {
 }
 DatabaseConnection();
 
-const port = 3015 || process.env.PORT ;
+const port = 3020 || process.env.PORT ;
 
-const host  = process.env.IP || 'localhost' ;
+const host  = process.env.HOST || '127.0.0.1' ;
 
 app.listen(port, host , () => {
     console.log(host);
